@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14D136" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Course" representedClassName="watchout.Course" syncable="YES">
+        <attribute name="information" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="lectures" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Lecture" inverseName="course" inverseEntity="Lecture" syncable="YES"/>
+        <relationship name="professor" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Professor" inverseName="courses" inverseEntity="Professor" syncable="YES"/>
+        <relationship name="reminders" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Reminder" inverseName="course" inverseEntity="Reminder" syncable="YES"/>
+    </entity>
+    <entity name="Lecture" representedClassName="watchout.Lecture" syncable="YES">
+        <attribute name="endTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="number" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="startTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="course" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Course" inverseName="lectures" inverseEntity="Course" syncable="YES"/>
+        <relationship name="weekDay" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WeekDay" inverseName="lectures" inverseEntity="WeekDay" syncable="YES"/>
+    </entity>
+    <entity name="Professor" representedClassName="watchout.Professor" syncable="YES">
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="courses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Course" inverseName="professor" inverseEntity="Course" syncable="YES"/>
+    </entity>
+    <entity name="Reminder" representedClassName="watchout.Reminder" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="information" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="course" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Course" inverseName="reminders" inverseEntity="Course" syncable="YES"/>
+    </entity>
+    <entity name="WeekDay" representedClassName="watchout.WeekDay" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="lectures" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Lecture" inverseName="weekDay" inverseEntity="Lecture" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Reminder" positionX="-218" positionY="-163" width="128" height="118"/>
+        <element name="Course" positionX="-182" positionY="26" width="128" height="118"/>
+        <element name="Professor" positionX="52" positionY="18" width="128" height="88"/>
+        <element name="Lecture" positionX="-180" positionY="215" width="128" height="118"/>
+        <element name="WeekDay" positionX="54" positionY="215" width="128" height="73"/>
+    </elements>
+</model>
